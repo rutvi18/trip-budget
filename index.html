@@ -62,10 +62,19 @@
             </div>
             <div class="progress-track" role="progressbar" aria-label="Trip savings progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
               <div class="progress-fill" id="progressFill"></div>
+              <div class="minimum-marker" id="minimumMarker" aria-hidden="true"></div>
             </div>
             <div class="progress-meta">
               <span><b id="remainingDisplay">₹1,55,000</b> to go</span>
               <span id="paceDisplay">Start your first deposit</span>
+            </div>
+            <div class="minimum-goal" id="minimumGoal">
+              <span class="minimum-goal-icon" aria-hidden="true">✓</span>
+              <span class="minimum-goal-copy">
+                <strong>Minimum trip fund</strong>
+                <small id="minimumStatus">Save ₹75,000 to be ready to go</small>
+              </span>
+              <strong class="minimum-goal-amount" id="minimumDisplay">₹75,000</strong>
             </div>
             <form class="deposit-form" id="depositForm">
               <label for="amountInput">Add to your fund</label>
@@ -111,9 +120,15 @@
               </div>
               <input type="month" id="tripDate" />
             </div>
-            <div class="per-person-total">
-              <span>Target per person</span>
-              <strong>₹1,55,000</strong>
+            <div class="goal-totals">
+              <div>
+                <span>Minimum per person</span>
+                <strong>₹75,000</strong>
+              </div>
+              <div>
+                <span>Comfort target per person</span>
+                <strong>₹1,55,000</strong>
+              </div>
             </div>
           </aside>
         </section>
@@ -193,7 +208,7 @@
           <article class="card research-card">
             <p class="label">BUDGET NOTES</p>
             <h3>Built with breathing room</h3>
-            <p>The target sits above common mid-range estimates, leaving room for better flight times, four-star stays and signature experiences without relying on bargain prices.</p>
+            <p>₹75,000 is the practical minimum fund for a lean seven-day trip with flights and visa covered. The ₹1,55,000 target adds room for better flight times, four-star stays and signature experiences.</p>
             <div class="source-links">
               <a href="https://www.finnable.com/finn-advice/vietnam-trip-cost-from-india/" target="_blank" rel="noreferrer">₹50k–₹1.8L trip range <span>↗</span></a>
               <a href="https://www.tripsidekick.in/blog/vietnam-trip-cost-from-india" target="_blank" rel="noreferrer">2026 flight benchmark <span>↗</span></a>

@@ -1,4 +1,5 @@
 const PER_PERSON_TARGET = 155000;
+const PER_PERSON_MINIMUM = 75000;
 const STORAGE_KEY = "roam-fund-vietnam-v2";
 
 const defaultState = {
@@ -18,6 +19,10 @@ const els = {
   percentDisplay: document.querySelector("#percentDisplay"),
   progressFill: document.querySelector("#progressFill"),
   progressTrack: document.querySelector(".progress-track"),
+  minimumMarker: document.querySelector("#minimumMarker"),
+  minimumGoal: document.querySelector("#minimumGoal"),
+  minimumDisplay: document.querySelector("#minimumDisplay"),
+  minimumStatus: document.querySelector("#minimumStatus"),
   paceDisplay: document.querySelector("#paceDisplay"),
   travellerCount: document.querySelector("#travellerCount"),
   tripDate: document.querySelector("#tripDate"),
@@ -61,8 +66,10 @@ function getMonthsRemaining() {
 
 function render() {
   const target = PER_PERSON_TARGET * state.travellers;
+  const minimum = PER_PERSON_MINIMUM * state.travellers;
   const saved = getSaved();
   const remaining = Math.max(0, target - saved);
+  const minimumRemaining = Math.max(0, minimum - saved);
   const percent = Math.min(100, Math.round((saved / target) * 100));
   const months = getMonthsRemaining();
 
@@ -72,6 +79,13 @@ function render() {
   els.percentDisplay.textContent = `${percent}%`;
   els.progressFill.style.width = `${percent}%`;
   els.progressTrack.setAttribute("aria-valuenow", percent);
+  els.progressTrack.setAttribute("aria-valuetext", `${formatCurrency(saved)} saved; minimum ${formatCurrency(minimum)}; comfort target ${formatCurrency(target)}`);
+  els.minimumMarker.style.left = `${(minimum / target) * 100}%`;
+  els.minimumDisplay.textContent = formatCurrency(minimum);
+  els.minimumGoal.classList.toggle("reached", minimumRemaining === 0);
+  els.minimumStatus.textContent = minimumRemaining === 0
+    ? "Minimum reached — you’re ready to go!"
+    : `${formatCurrency(minimumRemaining)} left to be ready to go`;
   els.travellerCount.textContent = state.travellers;
   els.tripDate.value = state.tripDate;
 
