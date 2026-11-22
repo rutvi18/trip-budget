@@ -4,7 +4,7 @@ A focused savings dashboard for a seven-day Vietnam trip from India. It tracks a
 
 Open `index.html` directly, or serve the directory with any static web server.
 
-Savings entries, traveller count and the target month are stored locally in the browser.
+Savings entries are persisted in a shared D1 database and appear to every visitor. Each browser can remove only its own contributions. Traveller count and the target month remain local preferences.
 
 ## Deploy with GitHub Pages
 

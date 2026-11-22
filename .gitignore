@@ -1,0 +1,6 @@
+node_modules/
+.wrangler/
+.sites-runtime/
+outputs/
+*.tar.gz
+.DS_Store
