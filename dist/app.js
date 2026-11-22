@@ -1,4 +1,4 @@
-const PER_PERSON_TARGET = 150000;
+const PER_PERSON_TARGET = 155000;
 const STORAGE_KEY = "roam-fund-vietnam-v2";
 
 const defaultState = {
