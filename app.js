@@ -3,6 +3,9 @@ const PER_PERSON_MINIMUM = 75000;
 const STORAGE_KEY = "roam-fund-vietnam-v2";
 const CLIENT_KEY = "roam-fund-client-id";
 const MIGRATION_KEY = "roam-fund-shared-migration-v1";
+const API_ORIGIN = window.location.hostname.endsWith("github.io")
+  ? "https://vietnam-roam-fund.rutvi-sharma.chatgpt.site"
+  : "";
 
 const defaultState = {
   travellers: 1,
@@ -144,7 +147,7 @@ function renderActivity() {
 }
 
 async function requestSavings(path = "", options = {}) {
-  const response = await fetch(`/api/savings${path}`, {
+  const response = await fetch(`${API_ORIGIN}/api/savings${path}`, {
     ...options,
     headers: { "content-type": "application/json", ...(options.headers || {}) }
   });

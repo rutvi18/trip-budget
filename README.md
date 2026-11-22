@@ -24,3 +24,5 @@ This repository is ready to publish as a static GitHub Pages site from the repos
    `https://rutvi18.github.io/trip-budget/`
 
 Future pushes to `main` will automatically republish the site.
+
+The GitHub Pages frontend uses the same shared savings API hosted by the public ChatGPT Site, so contributions stay synchronized across both URLs.

@@ -4,7 +4,10 @@ const app = "__APP_JS__";
 
 const jsonHeaders = {
   "content-type": "application/json; charset=utf-8",
-  "cache-control": "no-store"
+  "cache-control": "no-store",
+  "access-control-allow-origin": "https://rutvi18.github.io",
+  "access-control-allow-methods": "GET, POST, DELETE, OPTIONS",
+  "access-control-allow-headers": "content-type"
 };
 
 function json(data, status = 200) {
@@ -105,6 +108,9 @@ export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname;
     try {
+      if (path.startsWith("/api/") && request.method === "OPTIONS") {
+        return new Response(null, { status: 204, headers: jsonHeaders });
+      }
       if (path.startsWith("/api/")) return await handleApi(request, env, path);
       if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405 });
       if (path === "/" || path === "/index.html") return new Response(page, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-cache" } });

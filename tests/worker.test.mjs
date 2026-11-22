@@ -72,6 +72,10 @@ test("serves the dashboard and persists a shared contribution", async () => {
   assert.equal(page.status, 200);
   assert.match(await page.text(), /Shared live/);
 
+  const preflight = await worker.fetch(request("/api/savings", { method: "OPTIONS" }), { DB });
+  assert.equal(preflight.status, 204);
+  assert.equal(preflight.headers.get("access-control-allow-origin"), "https://rutvi18.github.io");
+
   const created = await worker.fetch(request("/api/savings", {
     method: "POST",
     headers: { "content-type": "application/json" },
